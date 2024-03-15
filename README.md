@@ -20,6 +20,6 @@ RAG System Design and Implementation Project
 |-----------|--------------|------|
 | pytorch | | |
 | langchain  |  |    |
-| 작성중 |  | |
+| ChromaDB |  | |
 
 # Installation
