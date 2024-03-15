@@ -1,0 +1,6 @@
+model:
+  path: "/data/LDCC-SOLAR-10.7B"
+
+generation:
+  max_length: 250
+  temperature: 0.1
