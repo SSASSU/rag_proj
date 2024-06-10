@@ -1,6 +1,6 @@
 model:
-  path: "/data/LDCC-SOLAR-10.7B"
+  path: "/data/aya-23-35B_8/aya-23-35B-Q8_0.gguf"
 
 generation:
-  max_length: 250
-  temperature: 0.1
+  max_length: 512
+  temperature: 0.2

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ntels Q/A System v0.1</title>
+    <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        #chat-box {
+            width: 1200px; /* 두 배로 늘리기 */
+            height: 400px;
+            border: 1px solid #ccc;
+            overflow-y: scroll;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        #user-input {
+            width: 100%;
+            box-sizing: border-box;
+            resize: none; /* 사용자가 직접 크기를 변경하지 못하게 함 */
+        }
+        .message { margin: 5px 0; }
+        .user { color: blue; }
+        .bot { color: green; }
+    </style>
+</head>
+<body>
+    <h1>ntels Q/A System v0.1</h1>
+    <div id="chat-box"></div>
+    <textarea id="user-input" rows="1" placeholder="Type a message..."></textarea>
+
+    <script>
+        var socket = io();
+
+        socket.on('receive_message', function(data) {
+            var chatBox = document.getElementById('chat-box');
+            var messageElement = document.createElement('div');
+            messageElement.classList.add('message', 'bot');
+            messageElement.innerText = 'Bot: ' + data.message;
+            chatBox.appendChild(messageElement);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        });
+
+        var userInput = document.getElementById('user-input');
+        userInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendMessage();
+            } else if (e.key === 'Enter' && e.shiftKey) {
+                e.preventDefault();
+                insertNewLine();
+            }
+        });
+
+        function insertNewLine() {
+            var cursorPosition = userInput.selectionStart;
+            var text = userInput.value;
+            userInput.value = text.slice(0, cursorPosition) + "\n" + text.slice(cursorPosition);
+            userInput.selectionStart = cursorPosition + 1;
+            userInput.selectionEnd = cursorPosition + 1;
+            userInput.rows += 1;
+        }
+
+        function sendMessage() {
+            var message = userInput.value;
+            if (message.trim() === '') return;
+            var chatBox = document.getElementById('chat-box');
+
+            var messageElement = document.createElement('div');
+            messageElement.classList.add('message', 'user');
+            messageElement.innerText = 'You: ' + message;
+            chatBox.appendChild(messageElement);
+            chatBox.scrollTop = chatBox.scrollHeight;
+
+            socket.emit('send_message', { message: message });
+            userInput.value = '';
+            userInput.rows = 1;
+        }
+    </script>
+</body>
+</html>

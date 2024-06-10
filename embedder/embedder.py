@@ -1,35 +1,54 @@
-from langchain_community.document_loaders import PyPDFLoader
-from langchain_community.vectorstores import Milvus
-from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain.chains import RetrievalQA, ConversationalRetrievalChain
-from langchain.embeddings import SentenceTransformerEmbeddings
+import os
+import fitz  # PyMuPDF
+import numpy as np
+import cohere
+from pymilvus import connections, FieldSchema, CollectionSchema, DataType, Collection
 
-## DB Connect
+def read_pdf_pages(file_path):
+    doc = fitz.open(file_path)
+    pages = []
+    for page in doc:
+        text = page.get_text("text").strip()
+        if text:
+            pages.append(text)
+    return pages
 
+cohere_key = "[COHERE KEY]"
+co = cohere.Client(cohere_key)
 
-## Text Embed
-loader = PyPDFLoader("./sample.pdf")
+connections.connect("default", host="192.168.15.94", port="19530")
 
-text_splitter = RecursiveCharacterTextSplitter(
-    chunk_size=30,
-    chunk_overlap=10
-    )
+fields = [
+    FieldSchema(name="id", dtype=DataType.INT64, is_primary=True, auto_id=True),
+    FieldSchema(name="embedding", dtype=DataType.FLOAT_VECTOR, dim=1024),  
+    FieldSchema(name="text", dtype=DataType.VARCHAR, max_length=65535)
+]
+schema = CollectionSchema(fields, "pdf_chunks")
 
-pages = loader.load_and_split(text_splitter)
+collection = Collection("pdf_chunks", schema)
 
-print(pages)
+index_params = {
+    "index_type": "IVF_FLAT",
+    "metric_type": "L2",
+    "params": {"nlist": 100}
+}
+collection.create_index(field_name="embedding", index_params=index_params)
 
-embeddings = SentenceTransformerEmbeddings(model_name="paraphrase-MiniLM-L6-v2")
+pdf_dir = "./pdf"
 
+all_chunks = []
+for filename in os.listdir(pdf_dir):
+    if filename.endswith(".pdf"):
+        pdf_path = os.path.join(pdf_dir, filename)
+        chunks = read_pdf_pages(pdf_path)
+        all_chunks.extend(chunks)
 
-vector_db = Milvus.from_documents(
-    pages,
-    embeddings,
-    connection_args={"host": "127.0.0.1", "port": "19530"},
-)
+embeddings = co.embed(texts=all_chunks, input_type="search_document", model="embed-multilingual-v3.0").embeddings
+embeddings = np.asarray(embeddings)
 
-query = "오늘 날짜는?"
-docs = vector_db.similarity_search(query)
-
-print (docs)
-
+data = [
+    embeddings.tolist(),
+    all_chunks
+]
+collection.insert(data)
+collection.load()
