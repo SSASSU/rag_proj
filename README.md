@@ -10,7 +10,7 @@ RAG System Design and Implementation Project
 |-----------|--------------|------|
 | OS | Ubuntu 22.04 | |
 | Python  | 3.9 |    |
-| Vector DB | Chroma   |   |
+| Vector DB | Milvus   |   |
 | Nvidia Driver |   |  |
 | LLM |  | |
 | 작성중 |  | |
@@ -20,6 +20,6 @@ RAG System Design and Implementation Project
 |-----------|--------------|------|
 | pytorch | | |
 | langchain  |  |    |
-| ChromaDB |  | |
+| |  | |
 
 # Installation
