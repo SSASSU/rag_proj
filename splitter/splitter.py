@@ -53,4 +53,4 @@ class TextSplitter():
                 output.append([(chunk_id, chunk) for chunk_id, chunk in enumerate(splitter.split_text(i)) if len(chunk) >= self.min_chunk_length])
             return output
         else:
-            return None
+            return None  
