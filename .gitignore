@@ -1,2 +1,17 @@
-.venv
-*.ipynb
+__pycache__/
+*.py[cod]
+*.pyc
+*$py.class
+
+.cache/
+
+# Flask stuff:
+instance/
+.webassets-cache
+
+# YAML files
+*.yaml
+
+# PDF files
+*.pdf
+
