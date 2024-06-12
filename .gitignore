@@ -15,3 +15,6 @@ instance/
 # PDF files
 *.pdf
 
+# temp
+test.py
+test.ipynb
