@@ -9,21 +9,19 @@ def index():
     print("index.html 실행")
     return render_template('index.html')
 
-@app.route('/search')
-def search():
-    print("search.html 실행")
-    return render_template('search.html')
-
-@app.route('/addfile')
-def addfile():
-    print("addfile.html 실행")
-    return render_template('addfile.html')
-
-@app.route('/setting')
-def setting():
-    print("setting.html 실행")
-    return render_template('setting.html')
-
+@app.route('/update_content/<page>')
+def update_content(page):
+    if page == 'addfile':
+        print("addfile")
+        return render_template('addfile.html')
+    elif page == 'search':
+        print("search")
+        return render_template('search.html')
+    elif page == 'setting':
+        print("setting")
+        return render_template('setting.html')
+    else:
+        return ''
 
 @app.route('/question', methods=['POST'])
 def question():

@@ -1,21 +1,13 @@
-{% extends "layout.html" %}
-
-{% block title %}Ntels AI Chat Demo - Search{% endblock %}
-
-{% block page_title %}Ntels AI Chat Demo - Search{% endblock %}
-
-{% block content %}
-<div id="chat-container">
-    <div id="chat-box"></div>
-    <div id="input-container">
-        <label for="chat-input" class="visually-hidden">Chat Input</label>
-        <input type="text" id="chat-input" placeholder="Type your message...">
-        <button id="send-btn">Send</button>
+<div>
+    <div id="chat-container">
+        <div id="chat-box"></div>
+        <div id="input-container">
+            <label for="chat-input" class="visually-hidden">Chat Input</label>
+            <input type="text" id="chat-input" placeholder="Type your message...">
+            <button id="send-btn">Send</button>
+        </div>
     </div>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/chat_style.css') }}">
+    <script src="{{ url_for('static', filename='scripts/chat_script.js') }}"></script>
 </div>
-
-<link rel="stylesheet" href="{{ url_for('static', filename='styles/chat_style.css') }}">
-<script src="{{ url_for('static', filename='scripts/chat_script.js') }}"></script>
-
-
-{% endblock %}

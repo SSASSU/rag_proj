@@ -1,6 +1,6 @@
 #chat-container {
     width: 100%;
-    max-width: 600px;
+    max-width: 1000px;
     height: 80vh;
     background-color: white;
     border-radius: 10px;
@@ -102,7 +102,7 @@
 }
 
 /* Responsive adjustments */
-@media (max-width: 600px) {
+@media (max-width: 1000px) {
     #chat-container {
         height: 90vh;
     }

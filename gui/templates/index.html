@@ -1,20 +1,114 @@
-{% extends "layout.html" %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=yes">
+    <meta name="format-detection" content="telephone=no">
+    <title>{% block title %}{% endblock %}</title>
+    <script src="{{ url_for('static', filename='scripts/jquery-3.6.0.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='scripts/jquery-ui.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='scripts/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='scripts/bootstrap-multiselect.js') }}"></script>
+    <script src="{{ url_for('static', filename='scripts/ui_common.min.js') }}"></script>
+    <link rel="shortcut icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon_tworldbiz.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
 
-{% block title %}Ntels AI Chat Demo - Home{% endblock %}
+    <script>
+        $(document).ready(function() {
+            // 각 링크를 클릭했을 때 AJAX 요청을 보내어 container를 업데이트합니다.
+            $('.navigation a').click(function(e){
+                e.preventDefault(); // 기본 이벤트 방지
+                console.log('링크가 클릭되었습니다:', this.href);
 
-{% block page_title %}Ntels AI Chat Demo - Home{% endblock %}
+                // 클릭된 링크의 href 속성과 텍스트 가져오기
+                var url = $(this).attr('href');
+                var page = $(this).data('page');
+                var text = $(this).text().trim();
 
-{% block content %}
-<!-- Home 페이지 내용 -->
-<div id="chat-container">
-    <div id="chat-box"></div>
-    <div id="input-container">
-        <label for="chat-input" class="visually-hidden">Chat Input</label>
-        <input type="text" id="chat-input" placeholder="Type your message...">
-        <button id="send-btn">Send</button>
+                $('#clicked_menu_tag').text(page)
+                $('#clicked_menu_name').text(text)
+                $('#page_title').text("Ntels AI Chat Demo - "+text)
+
+                // 클릭된 링크에 active 클래스 추가
+                $('.navigation li').removeClass('active');
+                 $(this).closest('li').addClass('active');
+
+                $.ajax({
+                    url: url,
+                    type: 'GET',
+                    success: function(response) {
+                        $('.content .container').html(response);
+                    }
+                });
+            });
+
+        });
+    </script>
+
+</head>
+<body>
+    <div class="wrap nav_lnb">
+        <div class="lnb">
+            <div class="lnb_top">
+                <h1 class="logo">
+                    <a href="#none">NUI Logo</a>
+                </h1>
+            </div>
+            <ul class="navigation" aria-label="메인 메뉴">
+                <li>
+                    <a href="{{ url_for('update_content', page='search') }}"><span class="menu_01" aria-hidden="true"></span><span>검색</span></a>
+                </li>
+                <li>
+                    <a href="{{ url_for('update_content', page='addfile') }}"><span class="menu_12" aria-hidden="true"></span><span>파일 추가</span></a>
+                </li>
+                <li>
+                    <a href="{{ url_for('update_content', page='setting') }}"><span class="menu_02" aria-hidden="true"></span><span>설정</span></a>
+                </li>
+            </ul>
+
+        </div>
+
+        <div class="sidebar">
+            <ul class="util_menu">
+                <li>
+                    <button type="button" class="btn icon btn_user">
+                        <span class="icon_user" data-toggle="tooltip" data-placement="bottom" title="User"></span>
+                        <span class="user">Administrator</span>
+                    </button>
+                    <div class="util_dropdown">
+                        <div class="user_info">
+                            <p class="customer">SK텔레콤</p>
+                            <p class="user_id">administrator</p>
+                        </div>
+                        <div class="btn_list">
+                            <button type="button">나의 정보</button>
+                            <button type="button">비밀번호 변경</button>
+                            <button type="button" class="btn_logout">로그아웃</button>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="page_title">
+            <div class="container">
+                <p class="path hide"><span id="clicked_menu_tag">addfile</span><span class="path_01"  id="clicked_menu_name">파일추가</span></p>
+                <h2 class="h2" id="page_title">Ntels AI Chat Demo - Home</h2>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="container">
+
+            </div>
+        </div>
+
+        <div class="floating_area">
+            <button type="button" class="btn_top">
+                <span class="icon_arrow_up" aria-hidden="true"></span>TOP
+            </button>
+        </div>
     </div>
-</div>
-
-<link rel="stylesheet" href="{{ url_for('static', filename='styles/chat_style.css') }}">
-<script src="{{ url_for('static', filename='scripts/chat_script.js') }}"></script>
-{% endblock %}
+</body>
+</html>
