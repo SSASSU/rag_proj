@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko"> <!--클래스명으로 로고&색상 구별 - skincolor_01(생략):T world biz, skincolor_02:Wavve -->
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=yes"> <!-- 반응형 -->
+	<meta name="format-detection" content="telephone=no"> <!-- 숫자값에 자동 링크 버그 제거 (Edge, mobile)-->
+	<title>Edge DC</title>
+	<!-- common -->
+
+	<script src="{{ url_for('static', filename='./scripts/jquery-3.6.0.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='./scripts/jquery-ui.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='./scripts/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='./scripts/bootstrap-multiselect.js') }}"></script>
+    <script src="{{ url_for('static', filename='./scripts/ui_common.min.js') }}"></script>
+
+    <link rel="shortcut icon" type="image/x-icon" href="{{ url_for('static', filename='./images/favicon_tworldbiz.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='./styles/style.css') }}">
+</head>
+<body>
+	<div class="wrap nav_lnb">
+		
+		<div class="lnb">
+			<div class="lnb_top">
+				<h1 class="logo">
+					<a href="#none">NUI Logo</a>
+				</h1>
+			</div>
+			<ul class="navigation" aria-label="메인 메뉴"> <!-- menu icon 01~17번까지 -->
+				<li>
+					<a href="#"><span class="menu_01" aria-hidden="true"></span><span>검색</span></a>
+				</li>
+				<li>
+					<a href="#"><span class="menu_12" aria-hidden="true"></span><span>파일 추가</span></a>
+				</li>
+				<li>
+					<a href="#"><span class="menu_02" aria-hidden="true"></span><span>설정</span></a>
+				</li>
+{#				<li>
+					<a href="#"><span class="menu_07" aria-hidden="true"></span><span>알람</span></a>
+					<ul>
+						<li><a href="#"><span>알람 이력</span></a></li>
+						<li><a href="#"><span>알람 설정</span></a></li>
+						<li><a href="#"><span>알람 탬플릿 관리</span></a></li>
+					</ul>
+				</li>#}
+			</ul>
+			<div class="lnb_bottom">
+				<button type="button" class="btn icon btn_lnb">
+					<span class="icon_angle_left" data-toggle="tooltip" data-placement="right" title="Collapse side menu"></span>
+				</button>
+			</div>
+		</div>
+		<!-- //lnb -->
+
+		<div class="sidebar">
+			<ul class="util_menu">
+				<li>
+					<button type="button" class="btn icon btn_user">
+						<span class="icon_user" data-toggle="tooltip" data-placement="bottom" title="User"></span>
+						<span class="user">Administrator</span>
+					</button>
+					<div class="util_dropdown">
+						<div class="user_info">
+							<p class="customer">SK텔레콤</p>
+							<p class="user_id">administrator</p>
+						</div>
+						<div class="btn_list">
+							<button type="button">나의 정보</button>
+							<button type="button">비밀번호 변경</button>
+							<button type="button" class="btn_logout">로그아웃</button>
+						</div>
+					</div>
+				</li>
+
+			</ul>
+		</div>
+
+		<div class="page_title">
+			<div class="container">
+                <p class="path hide"><span>search</span><span class="path_01">검색</span>
+				<h2 class="h2">Ntels AI Chat Demo</h2>
+			</div>
+		</div>
+		<!-- //page_title -->
+
+		<div class="content">
+			<div class="container">
+				<!-- 내용 샘플 텍스트 -->
+
+			</div>
+		</div>
+
+		<div class="floating_area">
+			<button type="button" class="btn_top">
+				<span class="icon_arrow_up" aria-hidden="true"></span>TOP
+			</button>
+		</div>
+	</div> 
+	<!-- //wrap -->
+</body>
+</html>

@@ -1,0 +1,126 @@
+#chat-container {
+    width: 100%;
+    max-width: 600px;
+    height: 80vh;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    margin: 10px;
+}
+
+#chat-box {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+#input-container {
+    display: flex;
+    border-top: 1px solid #ddd;
+    padding: 10px;
+}
+
+#chat-input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+#send-btn {
+    padding: 10px 20px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#send-btn:hover {
+    background-color: #0056b3;
+}
+
+.message {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.message.user {
+    justify-content: flex-end;
+}
+
+.message.user .bubble {
+    background-color: #007bff;
+    color: white;
+}
+
+.message.bot {
+    justify-content: flex-start;
+}
+
+.message.bot .bubble {
+    background-color: #e9e9eb;
+    color: black;
+}
+
+.message.bot.loading .bubble {
+    background-color: #f0f0f0;
+    color: gray;
+}
+
+.bubble {
+    padding: 10px;
+    border-radius: 15px;
+    max-width: 70%;
+    word-wrap: break-word;
+}
+
+.bubble.user {
+    border-bottom-right-radius: 0;
+}
+
+.bubble.bot {
+    border-bottom-left-radius: 0;
+}
+
+/* Add this class to visually hide the label */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    #chat-container {
+        height: 90vh;
+    }
+
+    .bubble {
+        max-width: 85%;
+    }
+
+    #input-container {
+        padding: 5px;
+    }
+
+    #chat-input {
+        padding: 5px;
+        margin-right: 5px;
+    }
+
+    #send-btn {
+        padding: 5px 10px;
+    }
+}

@@ -1,11 +1,10 @@
 {% extends "layout.html" %}
 
-{% block title %}Ntels AI Chat Demo - Home{% endblock %}
+{% block title %}Ntels AI Chat Demo - Search{% endblock %}
 
-{% block page_title %}Ntels AI Chat Demo - Home{% endblock %}
+{% block page_title %}Ntels AI Chat Demo - Search{% endblock %}
 
 {% block content %}
-<!-- Home 페이지 내용 -->
 <div id="chat-container">
     <div id="chat-box"></div>
     <div id="input-container">
@@ -17,4 +16,6 @@
 
 <link rel="stylesheet" href="{{ url_for('static', filename='styles/chat_style.css') }}">
 <script src="{{ url_for('static', filename='scripts/chat_script.js') }}"></script>
+
+
 {% endblock %}
