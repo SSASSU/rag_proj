@@ -1,0 +1,21 @@
+<svg id="chrome_logo" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 80 79.999">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.773" y1="0.958" x2="0.169" y2="-0.042" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#1e8e3e"/>
+      <stop offset="1" stop-color="#34a853"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="-0.146" y1="1.002" x2="0.72" y2="0.002" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#fcc934"/>
+      <stop offset="1" stop-color="#fbbc04"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-3" y1="0.5" x2="1" y2="0.5" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#d93025"/>
+      <stop offset="1" stop-color="#ea4335"/>
+    </linearGradient>
+  </defs>
+  <path d="M35.75,55.748a20,20,0,1,0-20-20A20,20,0,0,0,35.75,55.748Z" transform="translate(4.251 4.25)" fill="#fff"/>
+  <path d="M22.679,45.75l-17.319-30A39.992,39.992,0,0,0,40,75.747l17.319-30v-.005a20,20,0,0,1-34.643.005Z" transform="translate(0 4.252)" fill="url(#linear-gradient)"/>
+  <path d="M48.82,45.751l-17.318,30a39.992,39.992,0,0,0,34.634-60H31.5l0,0a20,20,0,0,1,17.326,30Z" transform="translate(8.5 4.251)" fill="url(#linear-gradient-2)"/>
+  <path d="M34.864,50.7A15.834,15.834,0,1,0,19.03,34.865,15.834,15.834,0,0,0,34.864,50.7Z" transform="translate(5.136 5.137)" fill="#1a73e8"/>
+  <path d="M38.861,20H73.5a39.992,39.992,0,0,0-69.277,0L21.54,50l0,0A20,20,0,0,1,38.861,20Z" transform="translate(1.139 0)" fill="url(#linear-gradient-3)"/>
+</svg>
