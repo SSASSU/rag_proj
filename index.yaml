@@ -1,10 +1,91 @@
+
 apiVersion: v1
 entries:
+  memcached:
+  - annotations:
+      category: Infrastructure
+      images: |
+        - name: memcached
+          image: docker.io/bitnami/memcached:1.6.38-debian-12-r0
+        - name: memcached-exporter
+          image: docker.io/bitnami/memcached-exporter:0.15.1-debian-12-r2
+        - name: os-shell
+          image: docker.io/bitnami/os-shell:12-debian-12-r40
+      licenses: Apache-2.0
+      tanzuCategory: service
+    apiVersion: v2
+    appVersion: 1.6.38
+    created: "2025-04-24T12:57:43.998604417+09:00"
+    dependencies:
+    - name: common
+      repository: oci://registry-1.docker.io/bitnamicharts
+      tags:
+      - bitnami-common
+      version: 2.x.x
+    description: Memcached is an high-performance, distributed memory object caching
+      system, generic in nature, but intended for use in speeding up dynamic web applications
+      by alleviating database load.
+    digest: e9ccf4d4fe83bdc88f3ebea438230d71787cfc37e19034ec98c0ea97d656ed41
+    home: https://bitnami.com
+    icon: https://dyltqmyl993wv.cloudfront.net/assets/stacks/memcached/img/memcached-stack-220x234.png
+    keywords:
+    - memcached
+    - cache
+    maintainers:
+    - name: Broadcom, Inc. All Rights Reserved.
+      url: https://github.com/bitnami/charts
+    name: memcached
+    sources:
+    - https://github.com/bitnami/charts/tree/main/bitnami/memcached
+    urls:
+    - https://github.com/SSASSU/rag_proj/charts/memcached-7.8.0.tgz
+    version: 7.8.0
   tarzandb:
-    - apiVersion: v2
-      name: tarzandb
-      version: 0.0.1
-      description: A Helm chart for TarzanDB
-      type: application
-      urls:
-        - https://github.com/SSASSU/rag_proj/releases/download/tesdt/tarzandb-0.0.1.tgz
+  - annotations:
+      category: Database
+      images: |
+        - name: os-shell
+          image: docker.io/bitnami/os-shell:12-debian-12-r40
+        - name: pgpool
+          image: docker.io/bitnami/pgpool:4.6.0-debian-12-r2
+        - name: postgres-exporter
+          image: docker.io/bitnami/postgres-exporter:0.17.1-debian-12-r2
+        - name: postgresql-repmgr
+          image: docker.io/bitnami/postgresql-repmgr:17.4.0-debian-12-r10
+      licenses: Apache-2.0
+      tanzuCategory: service
+    apiVersion: v2
+    appVersion: 17.4.0
+    created: "2025-04-24T12:57:43.995475176+09:00"
+    dependencies:
+    - name: common
+      repository: oci://registry-1.docker.io/bitnamicharts
+      tags:
+      - bitnami-common
+      version: 2.x.x
+    description: This PostgreSQL cluster solution includes the PostgreSQL replication
+      manager, an open-source tool for managing replication and failover on PostgreSQL
+      clusters.
+    digest: b9d3692c3b6b76cafce0614ae13ed3c6ac842662710a9e797649d5b1820567e2
+    home: https://bitnami.com
+    icon: https://dyltqmyl993wv.cloudfront.net/assets/stacks/postgresql/img/postgresql-stack-220x234.png
+    keywords:
+    - postgresql
+    - repmgr
+    - pgpool
+    - postgres
+    - database
+    - sql
+    - replication
+    - cluster
+    - high availability
+    maintainers:
+    - name: Broadcom, Inc. All Rights Reserved.
+      url: https://github.com/bitnami/charts
+    name: tarzandb
+    sources:
+    - https://github.com/bitnami/charts/tree/main/bitnami/postgresql-ha
+    urls:
+    - https://github.com/SSASSU/rag_proj/tarzandb-0.0.1.tgz
+    version: 0.0.1
+generated: "2025-04-24T12:57:43.986709385+09:00"
