@@ -1,0 +1,10 @@
+apiVersion: v1
+entries:
+  tarzandb:
+    - apiVersion: v2
+      name: tarzandb
+      version: 0.0.1
+      description: A Helm chart for TarzanDB
+      type: application
+      urls:
+        - https://github.com/SSASSU/rag_proj/releases/download/tesdt/tarzandb-0.0.1.tgz
